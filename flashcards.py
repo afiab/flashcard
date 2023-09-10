@@ -10,3 +10,28 @@ GLOBAL_2DLIST_QNA = [] #FORMAT: [[Q 1,A 1],...,[Q N+1,A N+1]]
 #Functions:
 def createList(filename):
     """parse txt file contents into GLOBAL_2DLIST_QNA"""
+    isQuestion = True
+    with open(filename) as contents: 
+        for line in contents:
+            if isQuestion:
+                '''if this is a question, 
+                add a space for the q+a in GLOBAL_2DLIST_QNA
+                with the question filled in'''
+                GLOBAL_2DLIST_QNA.append([line,""])
+            else:
+                '''if this is an answer,
+                replace the space from the question with the answer'''
+                GLOBAL_2DLIST_QNA[len(GLOBAL_2DLIST_QNA)-1][1]=line
+            isQuestion = not isQuestion
+
+def showList():
+    """accessor method for GLOBAL_2DLIST_QNA"""
+    return GLOBAL_2DLIST_QNA
+
+#main
+def main():
+    createList("exampleTextFile.txt")
+    print(showList())
+
+if __name__ == "__main__":
+    main()
