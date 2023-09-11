@@ -28,6 +28,14 @@ def showList():
     """accessor method for GLOBAL_2DLIST_QNA"""
     return GLOBAL_2DLIST_QNA
 
+def showQuestion(qNum):
+    """accessor method for specified question numbered qNum"""
+    return GLOBAL_2DLIST_QNA[int(qNum-1)][0]
+
+def showAnswer(aNum):
+    """accessor method for specified answer numbered aNum"""
+    return GLOBAL_2DLIST_QNA[int(aNum-1)][1]
+
 #main
 def main():
     createList("exampleTextFile.txt")
