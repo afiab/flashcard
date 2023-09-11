@@ -30,10 +30,14 @@ def showList():
 
 def showQuestion(qNum):
     """accessor method for specified question numbered qNum"""
+    if qNum>len(GLOBAL_2DLIST_QNA) or qNum<0:
+        return showQuestion(0)
     return GLOBAL_2DLIST_QNA[int(qNum-1)][0]
 
 def showAnswer(aNum):
     """accessor method for specified answer numbered aNum"""
+    if aNum>len(GLOBAL_2DLIST_QNA)or aNum<0:
+        return showAnswer(0)
     return GLOBAL_2DLIST_QNA[int(aNum-1)][1]
 
 #main
