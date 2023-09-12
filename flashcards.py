@@ -55,10 +55,10 @@ root.geometry("400x400")#minimum window size
 getFile = Frame(root)
 #prompt asks user for file
 prompt = Label(getFile, text="Input a file name: ")
-prompt.pack(side=LEFT)
+prompt.pack(side=LEFT,anchor=N)
 #response is where the user types the name
-response = Entry(getFile, bd =5)
-response.pack(side=RIGHT)
+response = Entry(getFile, width=50, bd =5)
+response.pack(side=RIGHT,anchor=N)
 
 #content would be the section with the text for the cards
 content = Frame(root)
