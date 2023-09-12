@@ -11,27 +11,26 @@ GLOBAL_CURRENT_INDEX = 0 #the current question
 
 #Functions:
 def createList(filename):
-    """parse txt file contents into GLOBAL_2DLIST_QNA"""
+    """parse txt file contents into respective lists"""
     isQuestion = True
     with open(filename) as contents: 
         for line in contents:
             if isQuestion:
                 '''if this is a question, 
-                add a space for the q+a in GLOBAL_2DLIST_QNA
-                with the question filled in'''
+                add the question to the list of questions'''
                 GLOBAL_QUESTIONS_LIST.append(line)
             else:
                 '''if this is an answer,
-                replace the space from the question with the answer'''
+                add the answer to the list of answers'''
                 GLOBAL_ANSWERS_LIST.append(line)
             isQuestion = not isQuestion
 
 def showQuestionList():
-    """accessor method for GLOBAL_2DLIST_QNA"""
+    """accessor method for GLOBAL_QUESTIONS_LIST"""
     return GLOBAL_QUESTIONS_LIST
 
 def showAnswerList():
-    """accessor method for GLOBAL_2DLIST_QNA"""
+    """accessor method for GLOBAL_ANSWERS_LIST"""
     return GLOBAL_ANSWERS_LIST
 
 def showQuestion(qNum=GLOBAL_CURRENT_INDEX):
