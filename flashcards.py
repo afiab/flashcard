@@ -49,16 +49,22 @@ def showAnswer(aNum=GLOBAL_CURRENT_INDEX):
 root = Tk()
 root.geometry("400x400")
 
+#content would be the section with the text for the cards
 content = Frame(root)
 words = Label(content)
 words['text']= 'placeholder'#showQuestion()
 words.pack(side=TOP)
 
+#action is the section with button to flip the card
 action = Frame(root)
 switch = Button(action)
 switch['text'] = 'flip'
 #switch['command'] = #funct that changes text
 
+#maybe another section here for 
+#buttons to go to next/prev card
+
+#determines where the sections are located
 content.pack(side=TOP, expand=YES, fill=BOTH)
 action.pack(side=TOP, expand=YES, fill=BOTH)
 
