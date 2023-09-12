@@ -5,7 +5,9 @@ creates a display with text
 """
 
 #Global Variables:
-GLOBAL_2DLIST_QNA = [] #FORMAT: [[Q 1,A 1],...,[Q N+1,A N+1]]
+GLOBAL_QUESTIONS_LIST = [] #Format: [q1, ..., qn]
+GLOBAL_ANSWERS_LIST = [] #Format: [a1, ..., an]
+GLOBAL_CURRENT_INDEX = 0 #the current question
 
 #Functions:
 def createList(filename):
@@ -17,33 +19,38 @@ def createList(filename):
                 '''if this is a question, 
                 add a space for the q+a in GLOBAL_2DLIST_QNA
                 with the question filled in'''
-                GLOBAL_2DLIST_QNA.append([line,""])
+                GLOBAL_QUESTIONS_LIST.append(line)
             else:
                 '''if this is an answer,
                 replace the space from the question with the answer'''
-                GLOBAL_2DLIST_QNA[len(GLOBAL_2DLIST_QNA)-1][1]=line
+                GLOBAL_ANSWERS_LIST.append(line)
             isQuestion = not isQuestion
 
-def showList():
+def showQuestionList():
     """accessor method for GLOBAL_2DLIST_QNA"""
-    return GLOBAL_2DLIST_QNA
+    return GLOBAL_QUESTIONS_LIST
 
-def showQuestion(qNum):
+def showAnswerList():
+    """accessor method for GLOBAL_2DLIST_QNA"""
+    return GLOBAL_ANSWERS_LIST
+
+def showQuestion(qNum=GLOBAL_CURRENT_INDEX):
     """accessor method for specified question numbered qNum"""
-    if qNum>len(GLOBAL_2DLIST_QNA) or qNum<0:
+    if qNum>len(GLOBAL_QUESTIONS_LIST) or qNum<0:
         return showQuestion(0)
-    return GLOBAL_2DLIST_QNA[int(qNum-1)][0]
+    return GLOBAL_QUESTIONS_LIST[int(qNum-1)][0]
 
-def showAnswer(aNum):
+def showAnswer(aNum=GLOBAL_CURRENT_INDEX):
     """accessor method for specified answer numbered aNum"""
-    if aNum>len(GLOBAL_2DLIST_QNA)or aNum<0:
+    if aNum>len(GLOBAL_ANSWERS_LIST)or aNum<0:
         return showAnswer(0)
-    return GLOBAL_2DLIST_QNA[int(aNum-1)][1]
+    return GLOBAL_ANSWERS_LIST[int(aNum-1)][1]
 
 #main
 def main():
     createList("exampleTextFile.txt")
-    print(showList())
+    print(showQuestionList())
+    print(showAnswerList())
 
 if __name__ == "__main__":
     main()
