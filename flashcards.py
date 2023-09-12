@@ -3,6 +3,7 @@ Mini Flash Card GUI
 Parse text file for front/back of cards
 creates a display with text
 """
+from tkinter import *
 
 #Global Variables:
 GLOBAL_QUESTIONS_LIST = [] #Format: [q1, ..., qn]
@@ -45,7 +46,26 @@ def showAnswer(aNum=GLOBAL_CURRENT_INDEX):
         return showAnswer(0)
     return GLOBAL_ANSWERS_LIST[int(aNum-1)][1]
 
+root = Tk()
+root.geometry("400x400")
+
+content = Frame(root)
+words = Label(content)
+words['text']= 'placeholder'#showQuestion()
+words.pack(side=TOP)
+
+action = Frame(root)
+switch = Button(action)
+switch['text'] = 'flip'
+#switch['command'] = #funct that changes text
+
+content.pack(side=TOP, expand=YES, fill=BOTH)
+action.pack(side=TOP, expand=YES, fill=BOTH)
+
+root.mainloop()
+
 #main
+"""#commented out for testing:
 def main():
     createList("exampleTextFile.txt")
     print(showQuestionList())
@@ -53,3 +73,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+"""
