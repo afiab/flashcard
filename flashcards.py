@@ -4,16 +4,15 @@ Parse text file for front/back of cards
 creates a display with text
 """
 from tkinter import *
-
-GLOBAL_QUESTIONS_LIST = [] #Format: [q1, ..., qn]
-GLOBAL_ANSWERS_LIST = [] #Format: [a1, ..., an]
 GLOBAL_CURRENT_INDEX = 0 #the current question
-GLOBAL_CURRENT_SIDE = True #True=question, False=answer
 
 #Functions:
 def createList(filename):
     """parse txt file contents into respective lists"""
-    global GLOBAL_QUESTIONS_LIST, GLOBAL_ANSWERS_LIST
+    global GLOBAL_QUESTIONS_LIST, GLOBAL_ANSWERS_LIST, GLOBAL_CURRENT_SIDE
+    GLOBAL_QUESTIONS_LIST = [] #Format: [q1, ..., qn]
+    GLOBAL_ANSWERS_LIST = [] #Format: [a1, ..., an]
+    GLOBAL_CURRENT_SIDE = True #True=question, False=answer
     isQuestion = True
     with open(filename) as contents: 
         for line in contents:
@@ -64,9 +63,10 @@ def flip():
 
 def record_file():
     """This function sets up everything after getting the filename"""
-    global GLOBAL_FILE_NAME
+    global GLOBAL_FILE_NAME, GLOBAL_CURRENT_INDEX, GLOBAL_QUESTIONS_LIST
     GLOBAL_FILE_NAME = response.get()
     createList(GLOBAL_FILE_NAME)
+    currentCard['text'] = "Card {0}/{1}".format(GLOBAL_CURRENT_INDEX,len(GLOBAL_QUESTIONS_LIST)-1)
     flip()
 
 root = Tk()
@@ -96,6 +96,12 @@ switch['text'] = 'flip'
 switch['command'] = flip#funct that changes text
 switch.pack(side=TOP)
 
+#track is section with general stats and prev/next button
+track = Frame(root)
+currentCard = Label(track)
+currentCard['text'] = "Card {0}/{1}".format(GLOBAL_CURRENT_INDEX,0)
+currentCard.pack(side=BOTTOM, anchor=W)
+
 #maybe another section here for 
 #buttons to go to next/prev card
 
@@ -103,5 +109,6 @@ switch.pack(side=TOP)
 getFile.pack(side=TOP, expand=YES, fill=BOTH)
 content.pack(side=TOP, expand=YES, fill=BOTH)
 action.pack(side=TOP, expand=YES, fill=BOTH)
+track.pack(side=BOTTOM,expand=YES,fill=BOTH)
 
 root.mainloop()
