@@ -5,7 +5,6 @@ creates a display with text
 """
 from tkinter import *
 
-global GLOBAL_QUESTIONS_LIST,GLOBAL_ANSWERS_LIST,GLOBAL_CURRENT_INDEX,GLOBAL_CURRENT_SIDE
 GLOBAL_QUESTIONS_LIST = [] #Format: [q1, ..., qn]
 GLOBAL_ANSWERS_LIST = [] #Format: [a1, ..., an]
 GLOBAL_CURRENT_INDEX = 0 #the current question
@@ -14,6 +13,7 @@ GLOBAL_CURRENT_SIDE = True #True=question, False=answer
 #Functions:
 def createList(filename):
     """parse txt file contents into respective lists"""
+    global GLOBAL_QUESTIONS_LIST, GLOBAL_ANSWERS_LIST
     isQuestion = True
     with open(filename) as contents: 
         for line in contents:
@@ -30,20 +30,24 @@ def createList(filename):
 
 def showQuestionList():
     """accessor method for GLOBAL_QUESTIONS_LIST"""
+    global GLOBAL_QUESTIONS_LIST
     return GLOBAL_QUESTIONS_LIST
 
 def showAnswerList():
     """accessor method for GLOBAL_ANSWERS_LIST"""
+    global GLOBAL_ANSWERS_LIST
     return GLOBAL_ANSWERS_LIST
 
 def showQuestion(qNum=GLOBAL_CURRENT_INDEX):
     """accessor method for specified question numbered qNum"""
+    global GLOBAL_QUESTIONS_LIST
     if qNum>len(GLOBAL_QUESTIONS_LIST) or qNum<0:
         return showQuestion(0)
     return GLOBAL_QUESTIONS_LIST[int(qNum)]
 
 def showAnswer(aNum=GLOBAL_CURRENT_INDEX):
     """accessor method for specified answer numbered aNum"""
+    global GLOBAL_ANSWERS_LIST
     if aNum>len(GLOBAL_ANSWERS_LIST)or aNum<0:
         return showAnswer(0)
     return GLOBAL_ANSWERS_LIST[int(aNum)]
@@ -65,10 +69,6 @@ def record_file():
     global GLOBAL_ANSWERS_LIST
     global GLOBAL_CURRENT_INDEX
     global GLOBAL_CURRENT_SIDE
-    GLOBAL_QUESTIONS_LIST = [] #Format: [q1, ..., qn]
-    GLOBAL_ANSWERS_LIST = [] #Format: [a1, ..., an]
-    GLOBAL_CURRENT_INDEX = 0 #the current question
-    GLOBAL_CURRENT_SIDE = True #True=question, False=answer
     global GLOBAL_FILE_NAME
     GLOBAL_FILE_NAME = response.get()
     createList(GLOBAL_FILE_NAME)
