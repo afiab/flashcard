@@ -64,11 +64,6 @@ def flip():
 
 def record_file():
     """This function sets up everything after getting the filename"""
-    #Global Variables:
-    global GLOBAL_QUESTIONS_LIST
-    global GLOBAL_ANSWERS_LIST
-    global GLOBAL_CURRENT_INDEX
-    global GLOBAL_CURRENT_SIDE
     global GLOBAL_FILE_NAME
     GLOBAL_FILE_NAME = response.get()
     createList(GLOBAL_FILE_NAME)
