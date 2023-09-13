@@ -62,7 +62,7 @@ def record_file():
     global GLOBAL_FILE_NAME, GLOBAL_CURRENT_INDEX, GLOBAL_QUESTIONS_LIST
     GLOBAL_FILE_NAME = response.get()
     createList(GLOBAL_FILE_NAME)
-    currentCard['text'] = "Card {0}/{1}".format(GLOBAL_CURRENT_INDEX,len(GLOBAL_QUESTIONS_LIST)-1)
+    currentCard['text'] = "Card {0}/{1}".format(GLOBAL_CURRENT_INDEX+1,len(GLOBAL_QUESTIONS_LIST))
     flip()
 
 def go_Back():
@@ -72,7 +72,7 @@ def go_Back():
         GLOBAL_CURRENT_INDEX=len(GLOBAL_QUESTIONS_LIST)-1
     else:
         GLOBAL_CURRENT_INDEX-=1
-    currentCard['text'] = "Card {0}/{1}".format(GLOBAL_CURRENT_INDEX,len(GLOBAL_QUESTIONS_LIST)-1)
+    currentCard['text'] = "Card {0}/{1}".format(GLOBAL_CURRENT_INDEX+1,len(GLOBAL_QUESTIONS_LIST))
     GLOBAL_CURRENT_SIDE = False
     showQuestion(GLOBAL_CURRENT_INDEX)
 
@@ -83,7 +83,7 @@ def go_Next():
         GLOBAL_CURRENT_INDEX=0
     else:
         GLOBAL_CURRENT_INDEX+=1
-    currentCard['text'] = "Card {0}/{1}".format(GLOBAL_CURRENT_INDEX,len(GLOBAL_QUESTIONS_LIST)-1)
+    currentCard['text'] = "Card {0}/{1}".format(GLOBAL_CURRENT_INDEX+1,len(GLOBAL_QUESTIONS_LIST))
     GLOBAL_CURRENT_SIDE = False
     showQuestion(GLOBAL_CURRENT_INDEX)
 
