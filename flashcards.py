@@ -17,8 +17,7 @@ def createList(filename):
     isQuestion = True
     with open(filename) as contents: 
         for line in contents:
-            if line[-1]=="\n": #get rid of "\n" in output for accessors
-                line = line[:-1]
+            line = line.strip()
             if isQuestion:
                 '''if this is a question, 
                 add the question to the list of questions'''
