@@ -110,14 +110,3 @@ content.pack(side=TOP, expand=YES, fill=BOTH)
 action.pack(side=TOP, expand=YES, fill=BOTH)
 
 root.mainloop()
-
-#main
-"""#commented out for testing:
-def main():
-    createList("exampleTextFile.txt")
-    print(showQuestionList())
-    print(showAnswerList())
-
-if __name__ == "__main__":
-    main()
-"""
