@@ -9,6 +9,7 @@ from tkinter import *
 GLOBAL_QUESTIONS_LIST = [] #Format: [q1, ..., qn]
 GLOBAL_ANSWERS_LIST = [] #Format: [a1, ..., an]
 GLOBAL_CURRENT_INDEX = 0 #the current question
+GLOBAL_CURRENT_SIDE = True #True=question, False=answer
 
 #Functions:
 def createList(filename):
@@ -48,6 +49,14 @@ def showAnswer(aNum=GLOBAL_CURRENT_INDEX):
         return showAnswer(0)
     return GLOBAL_ANSWERS_LIST[int(aNum-1)][1]
 
+#tkinter functions
+def flip():
+    """This function flips the card"""
+    if GLOBAL_CURRENT_SIDE:
+        prompt['text']=showQuestion()
+    else:
+        prompt['text']=showAnswer()
+
 root = Tk()
 root.geometry("400x200")#minimum window size
 
@@ -70,7 +79,8 @@ words.pack(side=TOP)
 action = Frame(root)
 switch = Button(action)
 switch['text'] = 'flip'
-#switch['command'] = #funct that changes text
+switch['command'] = flip#funct that changes text
+switch.pack(side=TOP)
 
 #maybe another section here for 
 #buttons to go to next/prev card
