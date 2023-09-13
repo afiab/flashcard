@@ -60,6 +60,7 @@ def flip():
     GLOBAL_CURRENT_SIDE = not GLOBAL_CURRENT_SIDE
 
 def record_file():
+    """This function sets up everything after getting the filename"""
     #Global Variables:
     global GLOBAL_QUESTIONS_LIST
     global GLOBAL_ANSWERS_LIST
