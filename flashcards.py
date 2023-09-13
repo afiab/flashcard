@@ -76,6 +76,17 @@ def go_Back():
     GLOBAL_CURRENT_SIDE = False
     showQuestion(GLOBAL_CURRENT_INDEX)
 
+def go_Next():
+    """This function goes to the next card"""
+    global GLOBAL_CURRENT_INDEX, GLOBAL_CURRENT_SIDE
+    if GLOBAL_CURRENT_INDEX==len(GLOBAL_QUESTIONS_LIST)-1:
+        GLOBAL_CURRENT_INDEX=0
+    else:
+        GLOBAL_CURRENT_INDEX+=1
+    currentCard['text'] = "Card {0}/{1}".format(GLOBAL_CURRENT_INDEX,len(GLOBAL_QUESTIONS_LIST)-1)
+    GLOBAL_CURRENT_SIDE = False
+    showQuestion(GLOBAL_CURRENT_INDEX)
+
 root = Tk()
 root.geometry("400x200")#minimum window size
 
@@ -110,7 +121,7 @@ currentCard['text'] = "Card {0}/{0}".format(0)
 currentCard.pack(side=LEFT, anchor=S)
 goNext = Button(track)
 goNext['text']='>'
-#goNext['command'] = #idk
+goNext['command'] = go_Next
 goNext.pack(side=RIGHT,anchor=S)
 goBack = Button(track)
 goBack['text']='<'
