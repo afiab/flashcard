@@ -49,7 +49,7 @@ def showAnswer(aNum=GLOBAL_CURRENT_INDEX):
     return GLOBAL_ANSWERS_LIST[int(aNum-1)][1]
 
 root = Tk()
-root.geometry("400x400")#minimum window size
+root.geometry("400x200")#minimum window size
 
 #getFile is section where user enters a file name
 getFile = Frame(root)
@@ -63,7 +63,7 @@ response.pack(side=RIGHT,anchor=N)
 #content would be the section with the text for the cards
 content = Frame(root)
 words = Label(content)
-words['text']= response#showQuestion()
+words['text']= "Type a file name above to get started"#showQuestion()
 words.pack(side=TOP)
 
 #action is the section with button to flip the card
