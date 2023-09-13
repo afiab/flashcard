@@ -5,7 +5,7 @@ creates a display with text
 """
 from tkinter import *
 
-#Global Variables:
+global GLOBAL_QUESTIONS_LIST,GLOBAL_ANSWERS_LIST,GLOBAL_CURRENT_INDEX,GLOBAL_CURRENT_SIDE
 GLOBAL_QUESTIONS_LIST = [] #Format: [q1, ..., qn]
 GLOBAL_ANSWERS_LIST = [] #Format: [a1, ..., an]
 GLOBAL_CURRENT_INDEX = 0 #the current question
@@ -41,21 +41,38 @@ def showQuestion(qNum=GLOBAL_CURRENT_INDEX):
     """accessor method for specified question numbered qNum"""
     if qNum>len(GLOBAL_QUESTIONS_LIST) or qNum<0:
         return showQuestion(0)
-    return GLOBAL_QUESTIONS_LIST[int(qNum-1)][0]
+    return GLOBAL_QUESTIONS_LIST[int(qNum)]
 
 def showAnswer(aNum=GLOBAL_CURRENT_INDEX):
     """accessor method for specified answer numbered aNum"""
     if aNum>len(GLOBAL_ANSWERS_LIST)or aNum<0:
         return showAnswer(0)
-    return GLOBAL_ANSWERS_LIST[int(aNum-1)][1]
+    return GLOBAL_ANSWERS_LIST[int(aNum)]
 
 #tkinter functions
 def flip():
-    """This function flips the card"""
+    """This function flips the card, and updates GLOBAL_CURRENT_SIDE"""
+    global GLOBAL_CURRENT_SIDE
     if GLOBAL_CURRENT_SIDE:
-        prompt['text']=showQuestion()
+        words['text']=showQuestion()
     else:
-        prompt['text']=showAnswer()
+        words['text']=showAnswer()
+    GLOBAL_CURRENT_SIDE = not GLOBAL_CURRENT_SIDE
+
+def record_file():
+    #Global Variables:
+    global GLOBAL_QUESTIONS_LIST
+    global GLOBAL_ANSWERS_LIST
+    global GLOBAL_CURRENT_INDEX
+    global GLOBAL_CURRENT_SIDE
+    GLOBAL_QUESTIONS_LIST = [] #Format: [q1, ..., qn]
+    GLOBAL_ANSWERS_LIST = [] #Format: [a1, ..., an]
+    GLOBAL_CURRENT_INDEX = 0 #the current question
+    GLOBAL_CURRENT_SIDE = True #True=question, False=answer
+    global GLOBAL_FILE_NAME
+    GLOBAL_FILE_NAME = response.get()
+    createList(GLOBAL_FILE_NAME)
+    flip()
 
 root = Tk()
 root.geometry("400x200")#minimum window size
@@ -66,8 +83,10 @@ getFile = Frame(root)
 prompt = Label(getFile, text="Input a file name: ")
 prompt.pack(side=LEFT,anchor=N)
 #response is where the user types the name
-response = Entry(getFile, width=50, bd =5)
-response.pack(side=RIGHT,anchor=N)
+response = Entry(getFile, width=40, bd =5)
+response.pack(side=LEFT,anchor=N)
+enter = Button(getFile, text="Enter", command=record_file)
+enter.pack(side=RIGHT,anchor=N)
 
 #content would be the section with the text for the cards
 content = Frame(root)
