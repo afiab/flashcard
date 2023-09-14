@@ -27,7 +27,7 @@ def createList(filename):
                 GLOBAL_ANSWERS_LIST.append(line)
             isQuestion = not isQuestion
     if not isQuestion: #edge case odd number of lines
-        GLOBAL_ANSWERS_LIST.append("?")
+        GLOBAL_ANSWERS_LIST.append("[MISSING ANSWER, PLEASE CHECK THE TEXT FILE]")
     if len(GLOBAL_QUESTIONS_LIST) <= 0: #if the file was empty
         GLOBAL_QUESTIONS_LIST.append("This file was empty. Please try a different file.")
         GLOBAL_ANSWERS_LIST.append("This file was empty. Please try a different file.")
@@ -93,7 +93,6 @@ def go_Next():
     showQuestion(GLOBAL_CURRENT_INDEX)
 
 root = Tk()
-root.geometry("450x150")#minimum window size
 
 backgroundColor = '#FFFFEA'
 buttonColor = '#CFBFF7'
@@ -111,7 +110,7 @@ enter.pack(side=RIGHT,anchor=N)
 
 #content would be the section with the text for the cards
 content = Frame(root, bg=backgroundColor)
-words = Label(content, text="\nType a file name above to get started", bg=backgroundColor, font=('Lucida Sans',12))
+words = Message(content, text="\nType a file name above to get started", bg=backgroundColor, font=('Lucida Sans',12), width=400)
 words.pack(side=TOP)
 
 #action is the section with button to flip the card
