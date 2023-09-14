@@ -2,7 +2,7 @@
 I decided to make this because the flashcard sites I was previously using started capitalizing on their users. 
 
 ## How it Works:
-Clone this repository (https://github.com/afiab/flashcard/tree/main) and open up a terminal. 
+Clone this repository (https://github.com/afiab/flashcard/) and open up a terminal. 
 
 For your flashcards, have a plain text file (file should end with `.txt`) and have each question and answer on a new line. This file should be saved in the same folder as this repository. There is a file in this repository for reference on formatting called `exampleTextFile.txt`. 
 
@@ -15,3 +15,5 @@ Once the window opens up, it should look like this:
 In the entry box at the top, type the name of your file with the `.txt` at the end. Once you've finished typing, click the Enter button. 
 
 Click the flip button to switch back and forth between the different sides of the current card. The two buttons on the bottom right let you go back and forth between cards, and the bottom left tells you which card you are currently on. When you switch cards, it will always start with the first line provided for that card. For example, in `exampleTextFile.txt`, the first 9 cards will start with the question side. 
+
+The window should automatically get taller/shorter based on the length of the content. If you'd like the window to stay at a fixed size, drag the bottom of the window to the desired width and it should stay at that height.
