@@ -9,7 +9,7 @@ For your flashcards, have a plain text file (file should end with `.txt`) and ha
 Once in the terminal, type ```python3 flashcards.py``` to run the program. (This assumes you previously installed Python version 3 or higher)
 
 Once the window opens up, it should look like this:
-![A window that says 'Input a file name' with an entry box and an enter button at the top. Towards the middle, it tells a user to type a file name to get started, and has a flip button under. The bottom left corner shows the current card number, and the bottom right has forward and backward buttons.](image.png)
+![A window that says 'Input a file name' with an entry box and an enter button at the top. Towards the middle, it tells a user to type a file name to get started, and has a flip button under. The bottom left corner shows the current card number, and the bottom right has forward and backward buttons.](https://github.com/afiab/flashcard/assets/90729548/ba3a9a80-5a90-4327-974e-9c7e401f9f3e)
 
 In the entry box at the top, type the name of your file with the `.txt` at the end. Once you've finished typing, click the Enter button. 
 
