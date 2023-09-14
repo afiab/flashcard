@@ -26,6 +26,11 @@ def createList(filename):
                 add the answer to the list of answers'''
                 GLOBAL_ANSWERS_LIST.append(line)
             isQuestion = not isQuestion
+    if not isQuestion: #edge case odd number of lines
+        GLOBAL_ANSWERS_LIST.append("?")
+    if len(GLOBAL_QUESTIONS_LIST) <= 0: #if the file was empty
+        GLOBAL_QUESTIONS_LIST.append("This file was empty. Please try a different file.")
+        GLOBAL_ANSWERS_LIST.append("This file was empty. Please try a different file.")
 
 def showQuestionList():
     """accessor method for GLOBAL_QUESTIONS_LIST"""
