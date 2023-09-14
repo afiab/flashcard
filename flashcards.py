@@ -40,12 +40,12 @@ def showAnswerList():
 def showQuestion(qNum):
     """accessor method for specified question numbered qNum"""
     global GLOBAL_QUESTIONS_LIST
-    words['text']=GLOBAL_QUESTIONS_LIST[int(qNum)]
+    words['text']='\n'+GLOBAL_QUESTIONS_LIST[int(qNum)]
 
 def showAnswer(aNum):
     """accessor method for specified answer numbered aNum"""
     global GLOBAL_ANSWERS_LIST        
-    words['text']=GLOBAL_ANSWERS_LIST[int(aNum)]
+    words['text']='\n'+GLOBAL_ANSWERS_LIST[int(aNum)]
 
 #tkinter functions
 def flip():
@@ -88,44 +88,39 @@ def go_Next():
     showQuestion(GLOBAL_CURRENT_INDEX)
 
 root = Tk()
-root.geometry("400x200")#minimum window size
+root.geometry("450x150")#minimum window size
+
+backgroundColor = '#FFFFEA'
+buttonColor = '#CFBFF7'
 
 #getFile is section where user enters a file name
-getFile = Frame(root)
+getFile = Frame(root, bg=backgroundColor)
 #prompt asks user for file
-prompt = Label(getFile, text="Input a file name: ")
+prompt = Label(getFile, text="Input a file name ", bg=backgroundColor, font=('Lucida Sans',12))
 prompt.pack(side=LEFT,anchor=N)
 #response is where the user types the name
 response = Entry(getFile, width=40, bd =5)
 response.pack(side=LEFT,anchor=N)
-enter = Button(getFile, text="Enter", command=record_file)
+enter = Button(getFile, text="Enter", bg=buttonColor, font=('MS UI Gothic',12), command=record_file)
 enter.pack(side=RIGHT,anchor=N)
 
 #content would be the section with the text for the cards
-content = Frame(root)
-words = Label(content)
-words['text']= "Type a file name above to get started"#showQuestion()
+content = Frame(root, bg=backgroundColor)
+words = Label(content, text="\nType a file name above to get started", bg=backgroundColor, font=('Lucida Sans',12))
 words.pack(side=TOP)
 
 #action is the section with button to flip the card
-action = Frame(root)
-switch = Button(action)
-switch['text'] = 'flip'
-switch['command'] = flip#funct that changes text
-switch.pack(side=TOP)
+action = Frame(root, bg=backgroundColor)
+switch = Button(action, text="FLIP", bg=buttonColor, font=('MS UI Gothic',12), command=flip)
+switch.pack(side=BOTTOM)
 
 #track is section with general stats and prev/next button
-track = Frame(root)
-currentCard = Label(track)
-currentCard['text'] = "Card {0}/{0}".format(0)
+track = Frame(root, bg=backgroundColor)
+currentCard = Label(track, text="Card -/-", bg=buttonColor, font=('Lucida Sans',12))
 currentCard.pack(side=LEFT, anchor=S)
-goNext = Button(track)
-goNext['text']='>'
-goNext['command'] = go_Next
+goNext = Button(track, text=">", bg=buttonColor, font=('MS UI Gothic',12), command=go_Next)
 goNext.pack(side=RIGHT,anchor=S)
-goBack = Button(track)
-goBack['text']='<'
-goBack['command'] = go_Back
+goBack = Button(track, text="<", bg=buttonColor, font=('MS UI Gothic',12), command=go_Back)
 goBack.pack(side=RIGHT,anchor=S)
 
 #determines where the sections are located
