@@ -14,6 +14,13 @@ Once the window opens up, it should look like this:
 
 In the entry box at the top, type the name of your file with the `.txt` at the end. Once you've finished typing, click the Enter button. 
 
-Click the flip button to switch back and forth between the different sides of the current card. The two buttons on the bottom right let you go back and forth between cards, and the bottom left tells you which card you are currently on. When you switch cards, it will always start with the first line provided for that card. For example, in `exampleTextFile.txt`, the first 9 cards will start with the question side. 
+Click the flip button to switch back and forth between the different sides of the current card. The two buttons on the bottom right let you go back and forth between cards, and the bottom left tells you which card you are currently on. When you switch cards, it will always start with the first line provided for that card. For example, in `exampleTextFile.txt`, the first 9 cards will start with the question side. (Scroll down for keyboard shortcuts)
 
 The window should automatically get taller/shorter based on the length of the content. If you'd like the window to stay at a fixed size, drag the bottom of the window to the desired width and it should stay at that height.
+
+## Keyboard Shortcuts 
+Press `ENTER` on your keyboard to press the `Enter` button on the screen.
+
+Press the `Up` arrow key to flip the card.
+
+Press `<` and `>` arrow keys to go back and forth between cards

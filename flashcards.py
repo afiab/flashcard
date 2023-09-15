@@ -133,4 +133,9 @@ content.pack(side=TOP, expand=YES, fill=BOTH)
 action.pack(side=TOP, expand=YES, fill=BOTH)
 track.pack(side=BOTTOM,expand=YES,fill=BOTH)
 
+root.bind('<Return>', lambda event:record_file())
+root.bind('<Up>', lambda event:flip())
+root.bind('<Left>', lambda event:go_Back())
+root.bind('<Right>', lambda event:go_Next())
+
 root.mainloop()
