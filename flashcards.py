@@ -14,18 +14,24 @@ def createList(filename):
     GLOBAL_CURRENT_SIDE = True #True=question, False=answer
     GLOBAL_CURRENT_INDEX = 0
     isQuestion = True
-    with open(filename) as contents: 
-        for line in contents:
-            line = line.strip()
-            if isQuestion:
-                '''if this is a question, 
-                add the question to the list of questions'''
-                GLOBAL_QUESTIONS_LIST.append(line)
-            else:
-                '''if this is an answer,
-                add the answer to the list of answers'''
-                GLOBAL_ANSWERS_LIST.append(line)
-            isQuestion = not isQuestion
+    try:
+        with open(filename) as contents: 
+            for line in contents:
+                line = line.strip()
+                if isQuestion:
+                    '''if this is a question, 
+                    add the question to the list of questions'''
+                    GLOBAL_QUESTIONS_LIST.append(line)
+                else:
+                    '''if this is an answer,
+                    add the answer to the list of answers'''
+                    GLOBAL_ANSWERS_LIST.append(line)
+                isQuestion = not isQuestion
+    except FileNotFoundError:
+        GLOBAL_QUESTIONS_LIST = [] #Format: [q1, ..., qn]
+        GLOBAL_ANSWERS_LIST = [] #Format: [a1, ..., an]
+        GLOBAL_QUESTIONS_LIST.append("Please type the name of a valid .txt file")
+        GLOBAL_ANSWERS_LIST.append("Please type the name of a valid .txt file")
     if not isQuestion: #edge case odd number of lines
         GLOBAL_ANSWERS_LIST.append("[MISSING ANSWER, PLEASE CHECK THE TEXT FILE]")
     if len(GLOBAL_QUESTIONS_LIST) <= 0: #if the file was empty
